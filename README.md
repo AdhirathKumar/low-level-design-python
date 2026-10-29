@@ -10,15 +10,34 @@ My notes and runnable Python examples from working through a 10-week Low Level D
 | [00-Roadmap.md](00-Roadmap.md) | The general roadmap: phases, weeks and all 58 topics |
 | [00-Roadmap-Python.md](00-Roadmap-Python.md) | The same roadmap with Python idioms and FastAPI connections for each topic. **Progress is tracked here.** |
 
+## How to use this repo
+
+Everyone is welcome to learn from it. Every topic has its own folder, and the files are numbered in the order to use them:
+
+1. **`1-notes.md`:** read the notes.
+2. **`2-example.py`:** run the example and change things to see what breaks.
+3. **`3-exercises.md`:** do the four exercises without looking back. Write your answers in the topic's `practice/` folder.
+4. **`4-solutions.py`:** check the solutions only after you've finished.
+
+`practice/` folders are git-ignored, so if you clone or fork this repo, your attempts stay out of your commits too.
+
 ## Structure
 
-Each phase gets its own folder once I start it. Every topic has a notes file and a runnable example:
+Each phase gets its own folder once I start it, and each topic gets a numbered folder inside it:
 
 ```
 01-OOP-Fundamentals/
-  01-encapsulation.md   # notes
-  encapsulation.py      # runnable example
+  01-encapsulation/
+    1-notes.md       # notes
+    2-example.py     # runnable example
+    3-exercises.md   # 4 exercises: spot the bug, refactor, build, explain aloud
+    4-solutions.py   # runnable solutions and model answers
+    practice/        # your own attempts (git-ignored)
+  02-abstraction/
+    ...
 ```
+
+A topic is ticked off in the roadmap only after all four exercises are done without looking at the solutions.
 
 | Phase | Folder | Status |
 |-------|--------|--------|
@@ -29,9 +48,23 @@ Each phase gets its own folder once I start it. Every topic has a notes file and
 
 ## Running the examples
 
-Examples use only the standard library and need Python 3.10+:
+The repo is a [uv](https://docs.astral.sh/uv/) project pinned to Python 3.13. Set it up once from the repo root:
 
 ```bash
-cd 01-OOP-Fundamentals
-python encapsulation.py
+uv sync
 ```
+
+Then run any file from anywhere inside the repo with `uv run`, which uses the project's `.venv` automatically:
+
+```bash
+cd 01-OOP-Fundamentals/01-encapsulation
+uv run python 2-example.py
+```
+
+Examples use only the standard library (Python 3.10+). Pydantic is installed only to run the comparison snippets in the notes.
+
+The files are run directly, not imported, so names like `2-example.py` work fine.
+
+## License
+
+[MIT](LICENSE): free to use, copy and adapt, with credit.
